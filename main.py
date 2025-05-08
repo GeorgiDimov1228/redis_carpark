@@ -7,8 +7,8 @@ class ParkingLot:
         self.available = list(range(1, max_slots + 1))
         heapq.heapify(self.available)  # Make it a min-heap
         # create empty dictionaries to map slot to cars. 2 dict for efficientcy
-        self.occupied = {}  slot -> car ID
-        self.car_to_slot = {}  car ID -> slot
+        self.occupied = {}  # slot -> car ID
+        self.car_to_slot = {}  # car ID -> slot
 
     def park_car(self, car_id):
         if not self.available:

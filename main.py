@@ -3,34 +3,35 @@ import heapq
 
 class ParkingLot:
     def __init__(self, max_slots):
-        # Create a list of available slots (1 to max_slots) and convert to a min-heap
+        # we use max_slots + 1 cuz range is  up to not including the last
         self.available = list(range(1, max_slots + 1))
         heapq.heapify(self.available)  # Make it a min-heap
-        self.occupied = {}  # Map slot -> car ID
-        self.car_to_slot = {}  # Map car ID -> slot
+        # create empty dictionaries to map slot to cars. 2 dict for efficientcy
+        self.occupied = {}  slot -> car ID
+        self.car_to_slot = {}  car ID -> slot
 
     def park_car(self, car_id):
         if not self.available:
             print("Full capacity, please wait.")
             return None
-        # Get the nearest available slot
+        # get the nearest available slot
         slot = heapq.heappop(self.available)
-        # Track both slot -> car ID and car ID -> slot
+        # track both slot -> car ID and car ID -> slot
         self.occupied[slot] = car_id
         self.car_to_slot[car_id] = slot
         print(f"Car {car_id} parked at slot {slot}")
         return slot
 
     def leave_slot(self, car_id):
-        # Check if the car ID exists in the mapping
+        # check if the car ID exists in the mapping
         if car_id not in self.car_to_slot:
             print(f"Car {car_id} not found in the parking lot.")
             return
-        # Find the slot from car ID
+        # find the slot from car ID
         slot = self.car_to_slot.pop(car_id)
-        # Remove from occupied slots
+        # remove from occupied slots
         self.occupied.pop(slot)
-        # Add the slot back to the available heap
+        # add the slot back to the available heap
         heapq.heappush(self.available, slot)
         print(f"Car {car_id} left from slot {slot}. Slot {slot} is now available.")
 

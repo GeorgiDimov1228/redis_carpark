@@ -25,11 +25,11 @@ class ParkingLot:
 
 
 lot = ParkingLot(2)
-lot.park_car()   # Car parks at slot 1
-lot.park_car()   # Car parks at slot 2
-lot.park_car()   # Car parks at slot 3
-lot.leave_slot(1)  # Car leaves from slot 1
-lot.park_car()   # Next car parks at slot 1 again
+lot.park_car()   
+lot.park_car()   
+lot.park_car()   
+lot.leave_slot(1) 
+lot.park_car()   
 
 # CONSOLE OUTPUT
 # Car parked at slot 1
